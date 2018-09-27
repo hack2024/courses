@@ -1,0 +1,1 @@
+Cualquier background function debe retornar una promesa
