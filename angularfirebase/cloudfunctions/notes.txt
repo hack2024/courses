@@ -1,1 +1,29 @@
+Background Functions
+==================================================
 Cualquier background function debe retornar una promesa
+
+Firestore Functions
+===================
+onCreate se lanza cuando se crea un documento por primera vez
+onUpdate se lanza cuando se actualiza un documento
+onDelete se lanza cuando se elimina un documento
+onWrite se lanza cuando se lanza alguna de las anteriores
+
+Storage Functions
+==================
+google.storage.object.finalize
+google.storage.object.delete
+google.storage.object.archive
+google.storage.object.metadataUpdate
+
+no se pueden hacer cosas especificas para una carpeta. los metodos que 
+se lanzan, se lanzan en todo el bucket. en todo caso se puede tener
+varios bucket.
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
